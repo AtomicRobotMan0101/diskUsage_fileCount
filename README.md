@@ -1,8 +1,8 @@
 Linux lacks a single GNU tool to provide **disk usage** and a **file count** for each directory.
 
-`du` provides usage and `find` provides counts, but how to get them BOTH at the same time?
+`du` provides usage and `find` provides counts, but how to get them BOTH at the same time? .... Gah!
 
-Gah!
+**WHAT IT DOES**
 
 **Example 1**
 
@@ -111,7 +111,46 @@ Using script 2 to output in a slightly different way
     20K - 1
 ```
 
+**HOW TO USE** 
 
+- Run this from the terminal
+-  Put this in your $PATH so it may run from anywhere
+ - Use `sudo` for where permissions are denied for root accessed files/directories
+
+ **IMPORTANT!**
+ 
+ This script will NOT count soft-mounted, nor hard-mounted links
+ 
+ It is designed to capture what is ON THE DEVICE upon which it is run
+ 
+ One may specify a mount in `/mnt/foo`
+
+ **USAGE**
+ 
+ - It takes one, or two, paramaters
+     - First is depth you wish to count
+         - i.e. 1,2,3... one deep, or N-deep
+     - Second is the directory to target, then the count
+
+ The script will assume the currect directory unless an alternative is
+ specified
+
+**EXAMPLES**
+- ./diskusage.sh 1
+-  ./diskusage.sh 5
+-  ./diskusage.sh /etc 1
+-  ./diskusage.sh ~ 3  # /home/foo
+-  ./diskusage.sh /mnt/NAS/Movies/ 3
+
+ There are TWO scripts, each outputs content in a particular way
+ that I found useful for the task at hand
+
+ Please feel free to modify this to suit you own needs, or offer
+ suggestions, improvements or pull requests for updates :)
+
+.
+.
+.
 
 **MORE EXPLANATION OF THE PROBLEM**
 
